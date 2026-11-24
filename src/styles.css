@@ -66,9 +66,9 @@
   --radius: 1.25rem;
   --background: oklch(0.972 0.005 17);
   --foreground: oklch(0.18 0.01 17);
-  --card: oklch(1 0 0);
+  --card: oklch(1 0 0 / 78%);
   --card-foreground: oklch(0.18 0.01 17);
-  --card-raised: oklch(0.935 0.008 17);
+  --card-raised: oklch(0.95 0.008 17 / 85%);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.01 17);
   --primary: oklch(0.6 0.245 17.1);
@@ -115,10 +115,6 @@
   --gradient-hero-fade: linear-gradient(180deg, transparent 55%, var(--background) 96%);
   --elev-glow: 0 18px 40px -16px oklch(0.6 0.245 17.1 / 45%);
   --elev-card: 0 30px 60px -30px oklch(0.3 0.05 15 / 28%);
-  --glass-card: oklch(1 0 0 / 72%);
-  --glass-card-raised: oklch(0.96 0.008 17 / 85%);
-  --glass-border: oklch(0.2 0.02 17 / 12%);
-  --glass-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Reeni-inspired dark palette: near-black canvas, charcoal cards, hot crimson accent. */
@@ -126,9 +122,9 @@
   --radius: 1.25rem;
   --background: oklch(0.122 0 0);
   --foreground: oklch(1 0 0);
-  --card: oklch(0.191 0 0);
+  --card: oklch(0.17 0.005 17 / 65%);
   --card-foreground: oklch(1 0 0);
-  --card-raised: oklch(0.231 0 0);
+  --card-raised: oklch(0.21 0.008 17 / 75%);
   --popover: oklch(0.191 0 0);
   --popover-foreground: oklch(1 0 0);
   --primary: oklch(0.635 0.254 17.1);
@@ -395,56 +391,35 @@
 }
 
 /* ==========================================================================
-   FULL SITE GLASSMORPHISM ENGINE
+   PERFECT DARK / LIGHT GLASSMORPHISM ENGINE
    ========================================================================== */
 
-.bg-card,
-article.bg-card,
-div.bg-card {
-  background-color: var(--glass-card) !important;
-  backdrop-filter: blur(20px) saturate(190%);
-  -webkit-backdrop-filter: blur(20px) saturate(190%);
-  border: 1px solid var(--glass-border) !important;
-  box-shadow: var(--glass-shadow);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.bg-card {
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid var(--color-border);
 }
 
-.bg-card:hover,
-article.bg-card:hover,
-div.bg-card:hover {
-  border-color: oklch(0.635 0.254 17.1 / 48%) !important;
-  box-shadow: 0 24px 50px -15px rgba(255, 0, 85, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+.dark .bg-card {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+:root:not(.dark) .bg-card {
+  border-color: rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.bg-card:hover {
+  border-color: oklch(0.635 0.254 17.1 / 45%) !important;
 }
 
 .bg-card-raised {
-  background-color: var(--glass-card-raised) !important;
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
 }
 
 [role="dialog"] {
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  background-color: var(--glass-card-raised) !important;
-  border: 1px solid var(--glass-border) !important;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
-}
-
-input,
-textarea {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background-color: oklch(1 0 0 / 5%) !important;
-  border: 1px solid var(--glass-border) !important;
-  transition: all 0.3s ease;
-}
-
-input:focus,
-textarea:focus {
-  border-color: var(--color-primary) !important;
-  box-shadow: 0 0 18px oklch(0.635 0.254 17.1 / 25%) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
