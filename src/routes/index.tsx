@@ -46,8 +46,16 @@ function Index() {
       >
         Skip to content
       </a>
+      {/* Ambient Liquid Glass Background Glow Orbs */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute -top-[10%] left-[10%] size-[620px] rounded-full bg-primary/14 blur-[140px] animate-pulse" style={{ animationDuration: '9s' }} />
+        <div className="absolute top-[30%] -right-[10%] size-[700px] rounded-full bg-[oklch(0.6_0.2_240)]/12 blur-[160px] animate-pulse" style={{ animationDuration: '12s' }} />
+        <div className="absolute top-[58%] left-[5%] size-[600px] rounded-full bg-[oklch(0.65_0.22_310)]/10 blur-[150px] animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-[80%] right-[15%] size-[640px] rounded-full bg-primary/12 blur-[150px] animate-pulse" style={{ animationDuration: '11s' }} />
+      </div>
+
       <SiteNavigation />
-      <div className="overflow-x-clip xl:pl-[290px]">
+      <div className="relative z-10 overflow-x-clip xl:pl-[290px]">
         <main id="main">
           <Hero />
           <About />

@@ -16,11 +16,11 @@ export function SiteNavigation() {
 
   return (
     <>
-      <header className="fixed inset-y-0 left-0 z-40 hidden w-[290px] overflow-y-auto border-r border-sidebar-border bg-sidebar-gradient xl:block">
+      <header className="fixed inset-y-0 left-0 z-40 hidden w-[290px] overflow-y-auto border-r border-sidebar-border bg-sidebar/75 backdrop-blur-2xl shadow-2xl xl:block">
         <SidebarContent active={active} />
       </header>
 
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md xl:hidden">
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/70 backdrop-blur-xl shadow-sm xl:hidden">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6">
           <a href="#home" className="flex items-center gap-3">
             <img
