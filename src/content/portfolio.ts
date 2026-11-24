@@ -79,9 +79,9 @@ export type SocialLink = { label: string; href: string; icon: LucideIcon };
 
 // TODO: replace these with your real profile URLs.
 export const socials: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: Linkedin },
-  { label: "Facebook", href: "https://www.facebook.com/", icon: Facebook },
+  { label: "GitHub", href: "https://github.com/Rahul-4u", icon: Github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/rahulbaishnab", icon: Linkedin },
+  { label: "Facebook", href: "https://web.facebook.com/rahul.baishnab.436978", icon: Facebook },
   { label: "Instagram", href: "https://www.instagram.com/", icon: Instagram },
 ];
 

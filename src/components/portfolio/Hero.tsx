@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hero, images, profile } from "@/content/portfolio";
 import { Socials } from "./Socials";
@@ -94,6 +94,12 @@ export function Hero() {
             <Button asChild variant="hero" size="pill">
               <a href="#portfolio">
                 View My Projects <ArrowRight />
+              </a>
+            </Button>
+            <Button asChild variant="ghostPill" size="pill">
+              <a href="https://github.com/Rahul-4u" target="_blank" rel="noopener noreferrer">
+                <Github className="size-4" />
+                GitHub Profile
               </a>
             </Button>
             <Button asChild variant="ghostPill" size="pill">
