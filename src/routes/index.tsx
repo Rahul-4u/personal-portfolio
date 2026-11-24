@@ -23,6 +23,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "google-site-verification", content: "PmnmM5rBOTHyTDKVhCdhPegl3ELSHriJ6kx6eV6t9AQ" },
+      { name: "keywords", content: "Rahul Baishnab, Full Stack Web Developer Bangladesh, WordPress Developer Bangladesh, WordPress Plugin Developer, Next.js React Developer, Freelance Web Developer" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },

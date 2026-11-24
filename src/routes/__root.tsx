@@ -83,6 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
+      { name: "google-site-verification", content: "PmnmM5rBOTHyTDKVhCdhPegl3ELSHriJ6kx6eV6t9AQ" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Rahul Baishnab — Full-Stack Web Developer" },
       {
@@ -124,6 +125,34 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Rahul Baishnab",
+              jobTitle: "Senior Full-Stack Web Developer",
+              url: "https://rahulweb24.vercel.app",
+              sameAs: [
+                "https://github.com/Rahul-4u",
+                "https://www.linkedin.com/in/rahulbaishnab"
+              ],
+              knowsAbout: [
+                "Full Stack Web Development",
+                "React",
+                "Next.js",
+                "PHP",
+                "WordPress Development",
+                "Tailwind CSS"
+              ],
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "Bangladesh"
+              }
+            }),
+          }}
+        />
         <HeadContent />
       </head>
       <body>
