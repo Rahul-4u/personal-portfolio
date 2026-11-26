@@ -18,6 +18,7 @@ import { BackToTop } from "@/components/portfolio/BackToTop";
 import { HackerLoader } from "@/components/portfolio/HackerLoader";
 import { GsapScrollProgress } from "@/components/portfolio/GsapScrollProgress";
 import { GsapCursor } from "@/components/portfolio/GsapCursor";
+import { ThreeBackground } from "@/components/portfolio/ThreeBackground";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -97,6 +98,8 @@ function Index() {
     <>
       <GsapScrollProgress />
       <GsapCursor />
+      {/* Three.js 3D interactive galaxy background */}
+      <ThreeBackground />
       <HackerLoader />
       <a
         href="#main"
@@ -108,21 +111,21 @@ function Index() {
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div
           ref={orb1Ref}
-          className="absolute -top-[10%] left-[10%] size-[620px] rounded-full bg-primary/14 blur-[140px] will-change-transform animate-pulse"
+          className="absolute -top-[10%] left-[10%] size-[620px] rounded-full bg-primary/10 blur-[140px] will-change-transform animate-pulse"
           style={{ animationDuration: '9s' }}
         />
         <div
           ref={orb2Ref}
-          className="absolute top-[30%] -right-[10%] size-[700px] rounded-full bg-[oklch(0.6_0.2_240)]/12 blur-[160px] will-change-transform animate-pulse"
+          className="absolute top-[30%] -right-[10%] size-[700px] rounded-full bg-[oklch(0.6_0.2_240)]/8 blur-[160px] will-change-transform animate-pulse"
           style={{ animationDuration: '12s' }}
         />
         <div
           ref={orb3Ref}
-          className="absolute top-[58%] left-[5%] size-[600px] rounded-full bg-[oklch(0.65_0.22_310)]/10 blur-[150px] will-change-transform animate-pulse"
+          className="absolute top-[58%] left-[5%] size-[600px] rounded-full bg-[oklch(0.65_0.22_310)]/7 blur-[150px] will-change-transform animate-pulse"
           style={{ animationDuration: '10s' }}
         />
         <div
-          className="absolute top-[80%] right-[15%] size-[640px] rounded-full bg-primary/12 blur-[150px] animate-pulse"
+          className="absolute top-[80%] right-[15%] size-[640px] rounded-full bg-primary/8 blur-[150px] animate-pulse"
           style={{ animationDuration: '11s' }}
         />
       </div>
