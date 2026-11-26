@@ -30,7 +30,7 @@ const deshlineProject = {
 
 const nexoraProject = {
   title: "Nexora — Digital Agency & Business CRM Platform",
-  category: "CRM & Business Solutions",
+  category: "React & Next.js Applications",
   description:
     "A high-converting digital agency platform unified with a multi-tenant business CRM, interactive client portal, project delivery pipelines, and revenue analytics.",
   image: nexoraImg,
