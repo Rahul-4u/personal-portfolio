@@ -3,14 +3,26 @@ import { CalendarClock, ChevronRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { blogPosts, profile, type BlogPost } from "@/content/portfolio";
-import { Reveal } from "./Reveal";
+import { useScrollAnim } from "@/hooks/useScrollAnim";
 import { SectionHeading } from "./SectionHeading";
 
 export function Blog() {
   const [post, setPost] = useState<BlogPost | null>(null);
 
+  // Clip-reveal wipe for blog cards
+  const sectionRef = useScrollAnim({
+    preset: "clipReveal",
+    targets: "article",
+    stagger: 0.13,
+    start: "top 83%",
+  });
+
   return (
-    <section id="blog" className="py-20 md:py-28">
+    <section
+      id="blog"
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="py-20 md:py-28"
+    >
       <div className="container-page">
         <SectionHeading
           eyebrow="Blog & Insights"
@@ -19,39 +31,37 @@ export function Blog() {
         />
         <div className="grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 3) * 0.08}>
-              <article className="group flex h-full flex-col overflow-hidden rounded-[20px] border-2 border-border bg-background transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt=""
-                    width={1200}
-                    height={800}
-                    loading="lazy"
-                    className="aspect-[7/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute left-2.5 top-2.5 flex items-center gap-3 rounded-full bg-background px-4 py-1.5 text-sm text-foreground">
-                    <span className="inline-flex items-center gap-1.5">
-                      <User className="size-3.5" /> {profile.firstName}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CalendarClock className="size-3.5" /> Coming soon
-                    </span>
-                  </div>
+            <article key={p.title} className="group flex h-full flex-col overflow-hidden rounded-[20px] border-2 border-border bg-background transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40">
+              <div className="relative overflow-hidden">
+                <img
+                  src={p.image}
+                  alt=""
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  className="aspect-[7/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute left-2.5 top-2.5 flex items-center gap-3 rounded-full bg-background px-4 py-1.5 text-sm text-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <User className="size-3.5" /> {profile.firstName}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <CalendarClock className="size-3.5" /> Coming soon
+                  </span>
                 </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <p className="text-sm font-medium text-primary">{p.category}</p>
-                  <h3 className="mt-2 text-[22px] leading-snug sm:text-2xl">{p.title}</h3>
-                  <button
-                    type="button"
-                    onClick={() => setPost(p)}
-                    className="mt-auto inline-flex w-fit cursor-pointer items-center gap-1 pt-6 text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    Read More <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </button>
-                </div>
-              </article>
-            </Reveal>
+              </div>
+              <div className="flex flex-1 flex-col p-7">
+                <p className="text-sm font-medium text-primary">{p.category}</p>
+                <h3 className="mt-2 text-[22px] leading-snug sm:text-2xl">{p.title}</h3>
+                <button
+                  type="button"
+                  onClick={() => setPost(p)}
+                  className="mt-auto inline-flex w-fit cursor-pointer items-center gap-1 pt-6 text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Read More <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
+            </article>
           ))}
         </div>
       </div>
