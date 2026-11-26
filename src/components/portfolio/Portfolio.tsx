@@ -7,6 +7,7 @@ import { projectCategories, projects as baseProjects, type Project } from "@/con
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
 import deshlineImg from "../../assets/deshline-preview.jpg";
+import nexoraImg from "../../assets/nexora-preview.jpg";
 
 type ModalState = { project: Project; mode: "preview" | "details" } | null;
 
@@ -26,11 +27,28 @@ const deshlineProject = {
   ],
 } as unknown as Project;
 
+
+const nexoraProject = {
+  title: "Nexora — Digital Agency & Business CRM Platform",
+  category: "CRM & Business Solutions",
+  description:
+    "A high-converting digital agency platform unified with a multi-tenant business CRM, interactive client portal, project delivery pipelines, and revenue analytics.",
+  image: nexoraImg,
+  liveUrl: "https://nexora-six-phi-85.vercel.app/",
+  isSample: false,
+  stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "CRM"],
+  details: [
+    "High-converting agency landing presence with interactive funnel optimization and service showcases.",
+    "Executive CRM dashboard with lead management, pipeline stages, revenue KPIs, and conversion metrics.",
+    "Integrated multi-tenant client workspace, project delivery tracking, and 24/7 business operations.",
+  ],
+} as unknown as Project;
+
 export function Portfolio() {
   const [filter, setFilter] = useState<string>("All");
   const [modal, setModal] = useState<ModalState>(null);
   const filters = ["All", ...projectCategories];
-  const projects = useMemo(() => [deshlineProject, ...baseProjects], []);
+  const projects = useMemo(() => [deshlineProject, nexoraProject, ...baseProjects], []);
   const visible = useMemo(
     () => (filter === "All" ? projects : projects.filter((p) => p.category === filter)),
     [filter, projects],
