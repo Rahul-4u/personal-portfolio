@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteNavigation } from "@/components/portfolio/SiteNavigation";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
@@ -13,6 +16,12 @@ import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { BackToTop } from "@/components/portfolio/BackToTop";
 import { HackerLoader } from "@/components/portfolio/HackerLoader";
+import { GsapScrollProgress } from "@/components/portfolio/GsapScrollProgress";
+import { GsapCursor } from "@/components/portfolio/GsapCursor";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const title = "Rahul Baishnab — Senior Full-Stack Web Developer";
 const description =
@@ -37,8 +46,57 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+  const orb3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (orb1Ref.current) {
+        gsap.to(orb1Ref.current, {
+          y: 280,
+          x: -60,
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+          },
+        });
+      }
+      if (orb2Ref.current) {
+        gsap.to(orb2Ref.current, {
+          y: -240,
+          x: 90,
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1.5,
+          },
+        });
+      }
+      if (orb3Ref.current) {
+        gsap.to(orb3Ref.current, {
+          y: 320,
+          x: 80,
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 2,
+          },
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
+      <GsapScrollProgress />
+      <GsapCursor />
       <HackerLoader />
       <a
         href="#main"
@@ -46,12 +104,27 @@ function Index() {
       >
         Skip to content
       </a>
-      {/* Ambient Liquid Glass Background Glow Orbs */}
+      {/* Ambient Liquid Glass Background Glow Orbs with GSAP Scroll Scrub */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-[10%] left-[10%] size-[620px] rounded-full bg-primary/14 blur-[140px] animate-pulse" style={{ animationDuration: '9s' }} />
-        <div className="absolute top-[30%] -right-[10%] size-[700px] rounded-full bg-[oklch(0.6_0.2_240)]/12 blur-[160px] animate-pulse" style={{ animationDuration: '12s' }} />
-        <div className="absolute top-[58%] left-[5%] size-[600px] rounded-full bg-[oklch(0.65_0.22_310)]/10 blur-[150px] animate-pulse" style={{ animationDuration: '10s' }} />
-        <div className="absolute top-[80%] right-[15%] size-[640px] rounded-full bg-primary/12 blur-[150px] animate-pulse" style={{ animationDuration: '11s' }} />
+        <div
+          ref={orb1Ref}
+          className="absolute -top-[10%] left-[10%] size-[620px] rounded-full bg-primary/14 blur-[140px] will-change-transform animate-pulse"
+          style={{ animationDuration: '9s' }}
+        />
+        <div
+          ref={orb2Ref}
+          className="absolute top-[30%] -right-[10%] size-[700px] rounded-full bg-[oklch(0.6_0.2_240)]/12 blur-[160px] will-change-transform animate-pulse"
+          style={{ animationDuration: '12s' }}
+        />
+        <div
+          ref={orb3Ref}
+          className="absolute top-[58%] left-[5%] size-[600px] rounded-full bg-[oklch(0.65_0.22_310)]/10 blur-[150px] will-change-transform animate-pulse"
+          style={{ animationDuration: '10s' }}
+        />
+        <div
+          className="absolute top-[80%] right-[15%] size-[640px] rounded-full bg-primary/12 blur-[150px] animate-pulse"
+          style={{ animationDuration: '11s' }}
+        />
       </div>
 
       <SiteNavigation />

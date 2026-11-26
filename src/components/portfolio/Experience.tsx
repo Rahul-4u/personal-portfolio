@@ -2,6 +2,7 @@ import { CheckCircle2 } from "lucide-react";
 import { experience, images } from "@/content/portfolio";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { GsapTilt } from "./GsapTilt";
 
 function TitleWithLine({ children }: { children: string }) {
   return (
@@ -25,11 +26,13 @@ export function Experience() {
         <div className="grid gap-5 md:grid-cols-2 md:gap-[30px]">
           {experience.focusAreas.map((f, i) => (
             <Reveal key={f.title} delay={(i % 2) * 0.08}>
-              <article className="h-full rounded-[20px] bg-card p-6 transition-transform duration-500 hover:-translate-y-1 sm:p-8">
-                <h4 className="font-sans text-lg font-normal text-foreground">{f.title}</h4>
-                <p className="mt-2 font-heading text-base font-bold text-foreground">{f.tag}</p>
-                <p className="mt-5 text-base leading-[1.85] sm:text-[17px]">{f.text}</p>
-              </article>
+              <GsapTilt maxTilt={4} className="h-full rounded-[20px]">
+                <article className="h-full rounded-[20px] bg-card p-6 transition-transform duration-500 hover:-translate-y-1 sm:p-8">
+                  <h4 className="font-sans text-lg font-normal text-foreground">{f.title}</h4>
+                  <p className="mt-2 font-heading text-base font-bold text-foreground">{f.tag}</p>
+                  <p className="mt-5 text-base leading-[1.85] sm:text-[17px]">{f.text}</p>
+                </article>
+              </GsapTilt>
             </Reveal>
           ))}
         </div>
@@ -52,16 +55,18 @@ export function Experience() {
             </Reveal>
           </div>
           <Reveal x={30} y={0} className="lg:pt-24">
-            <div className="group overflow-hidden rounded-[20px]">
-              <img
-                src={images.workspaceImage}
-                alt="Developer writing code at a desk"
-                width={1200}
-                height={800}
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
+            <GsapTilt maxTilt={4} className="rounded-[20px]">
+              <div className="group overflow-hidden rounded-[20px]">
+                <img
+                  src={images.workspaceImage}
+                  alt="Developer writing code at a desk"
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </GsapTilt>
           </Reveal>
         </div>
       </div>
